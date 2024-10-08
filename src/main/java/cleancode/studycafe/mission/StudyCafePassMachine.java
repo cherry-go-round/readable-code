@@ -35,20 +35,24 @@ public class StudyCafePassMachine {
     }
 
     private void actBy(StudyCafePassType studyCafePassType) {
-        if (studyCafePassType == StudyCafePassType.HOURLY) {
-            StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.HOURLY);
-            outputHandler.showPassOrderSummary(selectedPass, null);
-        } else if (studyCafePassType == StudyCafePassType.WEEKLY) {
-            StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.WEEKLY);
-            outputHandler.showPassOrderSummary(selectedPass, null);
-        } else if (studyCafePassType == StudyCafePassType.FIXED) {
-            StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.FIXED);
+        switch (studyCafePassType) {
+            case HOURLY -> {
+                StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.HOURLY);
+                outputHandler.showPassOrderSummary(selectedPass, null);
+            }
+            case WEEKLY -> {
+                StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.WEEKLY);
+                outputHandler.showPassOrderSummary(selectedPass, null);
+            }
+            case FIXED -> {
+                StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.FIXED);
 
-            Optional<StudyCafeLockerPass> lockerPass = findLockerPassBy(selectedPass);
-            lockerPass.ifPresentOrElse(
-                askLockerPassAndActBy(selectedPass),
-                () -> outputHandler.showPassOrderSummary(selectedPass, null)
-            );
+                Optional<StudyCafeLockerPass> lockerPass = findLockerPassBy(selectedPass);
+                lockerPass.ifPresentOrElse(
+                    askLockerPassAndActBy(selectedPass),
+                    () -> outputHandler.showPassOrderSummary(selectedPass, null)
+                );
+            }
         }
     }
 
