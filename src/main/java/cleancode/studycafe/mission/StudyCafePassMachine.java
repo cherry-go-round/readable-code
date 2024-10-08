@@ -1,7 +1,9 @@
 package cleancode.studycafe.mission;
 
 import cleancode.studycafe.mission.exception.AppException;
-import cleancode.studycafe.mission.io.*;
+import cleancode.studycafe.mission.io.InputHandler;
+import cleancode.studycafe.mission.io.OutputHandler;
+import cleancode.studycafe.mission.io.PassHandler;
 import cleancode.studycafe.mission.model.StudyCafeLockerPass;
 import cleancode.studycafe.mission.model.StudyCafePass;
 import cleancode.studycafe.mission.model.StudyCafePassType;
