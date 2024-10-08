@@ -1,8 +1,8 @@
-package cleancode.studycafe.asis.io;
+package cleancode.studycafe.mission.io;
 
-import cleancode.studycafe.asis.model.StudyCafeLockerPass;
-import cleancode.studycafe.asis.model.StudyCafePass;
-import cleancode.studycafe.asis.model.StudyCafePassType;
+import cleancode.studycafe.mission.model.StudyCafeLockerPass;
+import cleancode.studycafe.mission.model.StudyCafePass;
+import cleancode.studycafe.mission.model.StudyCafePassType;
 
 import java.io.IOException;
 import java.nio.file.Files;
