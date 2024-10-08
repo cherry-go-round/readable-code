@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface InputHandler {
 
-    public StudyCafePassType getPassTypeSelectingUserAction();
+    StudyCafePassType getPassTypeSelectingUserAction();
 
-    public StudyCafePass getSelectPass(List<StudyCafePass> passes);
+    StudyCafePass getSelectPass(List<StudyCafePass> passes);
 
-    public boolean isLockerSelected();
+    boolean isLockerSelected();
 
 }

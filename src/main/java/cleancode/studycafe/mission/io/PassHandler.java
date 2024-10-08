@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface PassHandler {
 
-    public List<StudyCafePass> readStudyCafePasses();
+    List<StudyCafePass> readStudyCafePasses();
 
-    public List<StudyCafeLockerPass> readLockerPasses();
+    List<StudyCafeLockerPass> readLockerPasses();
 
 }

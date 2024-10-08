@@ -6,19 +6,19 @@ import cleancode.studycafe.mission.model.StudyCafePass;
 import java.util.List;
 
 public interface OutputHandler {
-    public void showWelcomeMessage();
+    void showWelcomeMessage();
 
-    public void showAnnouncement();
+    void showAnnouncement();
 
-    public void askPassTypeSelection();
+    void askPassTypeSelection();
 
-    public void showPassListForSelection(List<StudyCafePass> passes);
+    void showPassListForSelection(List<StudyCafePass> passes);
 
-    public void askLockerPass(StudyCafeLockerPass lockerPass);
+    void askLockerPass(StudyCafeLockerPass lockerPass);
 
-    public void showPassOrderSummary(StudyCafePass selectedPass);
+    void showPassOrderSummary(StudyCafePass selectedPass);
 
-    public void showPassOrderSummaryWithLockerPass(StudyCafePass selectedPass, StudyCafeLockerPass lockerPass);
+    void showPassOrderSummaryWithLockerPass(StudyCafePass selectedPass, StudyCafeLockerPass lockerPass);
 
-    public void showSimpleMessage(String message);
+    void showSimpleMessage(String message);
 }
