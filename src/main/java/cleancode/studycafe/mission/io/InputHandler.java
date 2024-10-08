@@ -33,7 +33,7 @@ public class InputHandler {
         return passes.get(selectedIndex);
     }
 
-    public boolean getLockerSelection() {
+    public boolean isLockerSelected() {
         String userInput = SCANNER.nextLine();
         return SELECTED.equals(userInput);
     }
