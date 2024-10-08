@@ -32,7 +32,6 @@ public class StudyCafeLockerPass {
         return switch (passType) {
             case HOURLY -> String.format("%s시간권 - %d원", duration, price);
             case WEEKLY, FIXED -> String.format("%s주권 - %d원", duration, price);
-            default -> "";
         };
     }
 
