@@ -30,20 +30,14 @@ public class StudyCafeFileHandler {
         try {
             List<String> lines = readAllLinesFrom(Paths.get(LOCKER_PATH));
 
-            return lines.stream()
-                .map(line -> line.split(","))
-                .map(values -> {
-                    StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
-                    int duration = Integer.parseInt(values[1]);
-                    int price = Integer.parseInt(values[2]);
-
-                    return StudyCafeLockerPass.of(studyCafePassType, duration, price);
-                })
-                .toList();
-
+            return getLockerPasses(lines);
         } catch (IOException e) {
             throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
         }
+    }
+
+    private List<String> readAllLinesFrom(Path path) throws IOException {
+        return Files.readAllLines(path);
     }
 
     private List<StudyCafePass> getStudyCafePasses(List<String> lines) {
@@ -59,8 +53,17 @@ public class StudyCafeFileHandler {
             .toList();
     }
 
-    private List<String> readAllLinesFrom(Path path) throws IOException {
-        return Files.readAllLines(path);
+    private List<StudyCafeLockerPass> getLockerPasses(List<String> lines) {
+        return lines.stream()
+            .map(line -> line.split(","))
+            .map(values -> {
+                StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
+                int duration = Integer.parseInt(values[1]);
+                int price = Integer.parseInt(values[2]);
+
+                return StudyCafeLockerPass.of(studyCafePassType, duration, price);
+            })
+            .toList();
     }
 
 }
