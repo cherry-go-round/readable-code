@@ -39,17 +39,20 @@ public class StudyCafePassMachine {
                     .findFirst()
                     .orElse(null);
 
-                boolean lockerSelection = false;
                 if (lockerPass != null) {
                     outputHandler.askLockerPass(lockerPass);
-                    lockerSelection = inputHandler.isLockerSelected();
+                    boolean lockerSelection = inputHandler.isLockerSelected();
+
+                    if (lockerSelection) {
+                        outputHandler.showPassOrderSummary(selectedPass, lockerPass);
+                    } else {
+                        outputHandler.showPassOrderSummary(selectedPass, null);
+                    }
+
+                    return;
                 }
 
-                if (lockerSelection) {
-                    outputHandler.showPassOrderSummary(selectedPass, lockerPass);
-                } else {
-                    outputHandler.showPassOrderSummary(selectedPass, null);
-                }
+                outputHandler.showPassOrderSummary(selectedPass, null);
             }
         } catch (AppException e) {
             outputHandler.showSimpleMessage(e.getMessage());
