@@ -17,7 +17,7 @@ public class StudyCafeFileHandler {
 
     public List<StudyCafePass> readStudyCafePasses() {
         try {
-            List<String> lines = readAllLinesFrom(Paths.get(PASS_LIST_PATH));
+            List<String> lines = readAllLinesAt(Paths.get(PASS_LIST_PATH));
 
             return getStudyCafePasses(lines);
         } catch (IOException e) {
@@ -27,7 +27,7 @@ public class StudyCafeFileHandler {
 
     public List<StudyCafeLockerPass> readLockerPasses() {
         try {
-            List<String> lines = readAllLinesFrom(Paths.get(LOCKER_PATH));
+            List<String> lines = readAllLinesAt(Paths.get(LOCKER_PATH));
 
             return getLockerPasses(lines);
         } catch (IOException e) {
@@ -35,7 +35,7 @@ public class StudyCafeFileHandler {
         }
     }
 
-    private List<String> readAllLinesFrom(Path path) throws IOException {
+    private List<String> readAllLinesAt(Path path) throws IOException {
         return Files.readAllLines(path);
     }
 
