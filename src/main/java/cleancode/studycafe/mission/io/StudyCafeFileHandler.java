@@ -10,11 +10,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class StudyCafeFileHandler {
+public class StudyCafeFileHandler implements PassHandler {
 
     private static final String PASS_LIST_PATH = "src/main/resources/cleancode/studycafe/pass-list.csv";
     private static final String LOCKER_PATH = "src/main/resources/cleancode/studycafe/locker.csv";
 
+    @Override
     public List<StudyCafePass> readStudyCafePasses() {
         try {
             List<String> lines = readAllLinesAt(Paths.get(PASS_LIST_PATH));
@@ -25,6 +26,7 @@ public class StudyCafeFileHandler {
         }
     }
 
+    @Override
     public List<StudyCafeLockerPass> readLockerPasses() {
         try {
             List<String> lines = readAllLinesAt(Paths.get(LOCKER_PATH));

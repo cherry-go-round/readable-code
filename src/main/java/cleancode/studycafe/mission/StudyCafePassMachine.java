@@ -12,13 +12,14 @@ import java.util.function.Consumer;
 
 public class StudyCafePassMachine {
 
-    private static final StudyCafeFileHandler FILE_HANDLER = new StudyCafeFileHandler();
     private final InputHandler inputHandler;
     private final OutputHandler consoleOutputHandler;
+    private final PassHandler passHandler;
 
-    public StudyCafePassMachine(InputHandler inputHandler, OutputHandler consoleOutputHandler) {
+    public StudyCafePassMachine(InputHandler inputHandler, OutputHandler consoleOutputHandler, PassHandler passHandler) {
         this.inputHandler = inputHandler;
         this.consoleOutputHandler = consoleOutputHandler;
+        this.passHandler = passHandler;
     }
 
     public void run() {
@@ -56,7 +57,7 @@ public class StudyCafePassMachine {
     }
 
     private StudyCafePass getStudyCafePassBy(StudyCafePassType passType) {
-        List<StudyCafePass> studyCafePasses = FILE_HANDLER.readStudyCafePasses();
+        List<StudyCafePass> studyCafePasses = passHandler.readStudyCafePasses();
         List<StudyCafePass> filteredPasses = filterStudyCafePassesByType(studyCafePasses, passType);
 
         consoleOutputHandler.showPassListForSelection(filteredPasses);
@@ -71,7 +72,7 @@ public class StudyCafePassMachine {
     }
 
     private Optional<StudyCafeLockerPass> findLockerPassBy(StudyCafePass studyCafePass) {
-        List<StudyCafeLockerPass> lockerPasses = FILE_HANDLER.readLockerPasses();
+        List<StudyCafeLockerPass> lockerPasses = passHandler.readLockerPasses();
         return lockerPasses.stream()
             .filter(option -> studyCafePass.isSamePassTypeAndDuration(option.getPassType(), option.getDuration()))
             .findFirst();
