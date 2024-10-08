@@ -30,8 +30,8 @@ public class StudyCafePass {
         return price;
     }
 
-    public double getDiscountRate() {
-        return discountRate;
+    public int getDiscountPrice() {
+        return (int) (price * discountRate);
     }
 
     public String display() {
