@@ -1,10 +1,7 @@
 package cleancode.studycafe.mission;
 
 import cleancode.studycafe.mission.exception.AppException;
-import cleancode.studycafe.mission.io.ConsoleInputHandler;
-import cleancode.studycafe.mission.io.InputHandler;
-import cleancode.studycafe.mission.io.OutputHandler;
-import cleancode.studycafe.mission.io.StudyCafeFileHandler;
+import cleancode.studycafe.mission.io.*;
 import cleancode.studycafe.mission.model.StudyCafeLockerPass;
 import cleancode.studycafe.mission.model.StudyCafePass;
 import cleancode.studycafe.mission.model.StudyCafePassType;
@@ -17,21 +14,21 @@ public class StudyCafePassMachine {
 
     private static final StudyCafeFileHandler FILE_HANDLER = new StudyCafeFileHandler();
     private final InputHandler inputHandler = new ConsoleInputHandler();
-    private final OutputHandler outputHandler = new OutputHandler();
+    private final OutputHandler consoleOutputHandler = new ConsoleOutputHandler();
 
     public void run() {
         try {
-            outputHandler.showWelcomeMessage();
-            outputHandler.showAnnouncement();
+            consoleOutputHandler.showWelcomeMessage();
+            consoleOutputHandler.showAnnouncement();
 
-            outputHandler.askPassTypeSelection();
+            consoleOutputHandler.askPassTypeSelection();
             StudyCafePassType studyCafePassType = inputHandler.getPassTypeSelectingUserAction();
 
             actBy(studyCafePassType);
         } catch (AppException e) {
-            outputHandler.showSimpleMessage(e.getMessage());
+            consoleOutputHandler.showSimpleMessage(e.getMessage());
         } catch (Exception e) {
-            outputHandler.showSimpleMessage("알 수 없는 오류가 발생했습니다.");
+            consoleOutputHandler.showSimpleMessage("알 수 없는 오류가 발생했습니다.");
         }
     }
 
@@ -39,7 +36,7 @@ public class StudyCafePassMachine {
         switch (studyCafePassType) {
             case HOURLY, WEEKLY -> {
                 StudyCafePass selectedPass = getStudyCafePassBy(studyCafePassType);
-                outputHandler.showPassOrderSummary(selectedPass);
+                consoleOutputHandler.showPassOrderSummary(selectedPass);
             }
             case FIXED -> {
                 StudyCafePass selectedPass = getStudyCafePassBy(studyCafePassType);
@@ -47,7 +44,7 @@ public class StudyCafePassMachine {
                 Optional<StudyCafeLockerPass> lockerPass = findLockerPassBy(selectedPass);
                 lockerPass.ifPresentOrElse(
                     askLockerPassAndActBy(selectedPass),
-                    () -> outputHandler.showPassOrderSummary(selectedPass)
+                    () -> consoleOutputHandler.showPassOrderSummary(selectedPass)
                 );
             }
         }
@@ -57,7 +54,7 @@ public class StudyCafePassMachine {
         List<StudyCafePass> studyCafePasses = FILE_HANDLER.readStudyCafePasses();
         List<StudyCafePass> filteredPasses = filterStudyCafePassesByType(studyCafePasses, passType);
 
-        outputHandler.showPassListForSelection(filteredPasses);
+        consoleOutputHandler.showPassListForSelection(filteredPasses);
 
         return inputHandler.getSelectPass(filteredPasses);
     }
@@ -77,13 +74,13 @@ public class StudyCafePassMachine {
 
     private Consumer<? super StudyCafeLockerPass> askLockerPassAndActBy(StudyCafePass selectedPass) {
         return lockerPass -> {
-            outputHandler.askLockerPass(lockerPass);
+            consoleOutputHandler.askLockerPass(lockerPass);
             boolean lockerSelection = inputHandler.isLockerSelected();
 
             if (lockerSelection) {
-                outputHandler.showPassOrderSummaryWithLockerPass(selectedPass, lockerPass);
+                consoleOutputHandler.showPassOrderSummaryWithLockerPass(selectedPass, lockerPass);
             } else {
-                outputHandler.showPassOrderSummary(selectedPass);
+                consoleOutputHandler.showPassOrderSummary(selectedPass);
             }
         };
     }
