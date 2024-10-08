@@ -38,7 +38,7 @@ public class StudyCafePassMachine {
         switch (studyCafePassType) {
             case HOURLY, WEEKLY -> {
                 StudyCafePass selectedPass = getStudyCafePassBy(studyCafePassType);
-                outputHandler.showPassOrderSummary(selectedPass, null);
+                outputHandler.showPassOrderSummary(selectedPass);
             }
             case FIXED -> {
                 StudyCafePass selectedPass = getStudyCafePassBy(studyCafePassType);
@@ -46,7 +46,7 @@ public class StudyCafePassMachine {
                 Optional<StudyCafeLockerPass> lockerPass = findLockerPassBy(selectedPass);
                 lockerPass.ifPresentOrElse(
                     askLockerPassAndActBy(selectedPass),
-                    () -> outputHandler.showPassOrderSummary(selectedPass, null)
+                    () -> outputHandler.showPassOrderSummary(selectedPass)
                 );
             }
         }
@@ -80,9 +80,9 @@ public class StudyCafePassMachine {
             boolean lockerSelection = inputHandler.isLockerSelected();
 
             if (lockerSelection) {
-                outputHandler.showPassOrderSummary(selectedPass, lockerPass);
+                outputHandler.showPassOrderSummaryWithLockerPass(selectedPass, lockerPass);
             } else {
-                outputHandler.showPassOrderSummary(selectedPass, null);
+                outputHandler.showPassOrderSummary(selectedPass);
             }
         };
     }
