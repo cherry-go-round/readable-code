@@ -21,6 +21,7 @@ public class StudyCafePass {
     public boolean isSamePassType(StudyCafePassType passType) {
         return this.passType == passType;
     }
+
     public boolean isSamePassTypeAndDuration(StudyCafePassType passType, int duration) {
         return this.passType.equals(passType) && this.duration == duration;
     }
