@@ -36,16 +36,12 @@ public class StudyCafePassMachine {
 
     private void actBy(StudyCafePassType studyCafePassType) {
         switch (studyCafePassType) {
-            case HOURLY -> {
-                StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.HOURLY);
-                outputHandler.showPassOrderSummary(selectedPass, null);
-            }
-            case WEEKLY -> {
-                StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.WEEKLY);
+            case HOURLY, WEEKLY -> {
+                StudyCafePass selectedPass = getStudyCafePassBy(studyCafePassType);
                 outputHandler.showPassOrderSummary(selectedPass, null);
             }
             case FIXED -> {
-                StudyCafePass selectedPass = getStudyCafePassBy(StudyCafePassType.FIXED);
+                StudyCafePass selectedPass = getStudyCafePassBy(studyCafePassType);
 
                 Optional<StudyCafeLockerPass> lockerPass = findLockerPassBy(selectedPass);
                 lockerPass.ifPresentOrElse(
