@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class StudyCafeFileHandler {
@@ -43,27 +42,32 @@ public class StudyCafeFileHandler {
     private List<StudyCafePass> getStudyCafePasses(List<String> lines) {
         return lines.stream()
             .map(line -> line.split(","))
-            .map(values -> {
-                StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
-                int duration = Integer.parseInt(values[1]);
-                int price = Integer.parseInt(values[2]);
-                double discountRate = Double.parseDouble(values[3]);
-                return StudyCafePass.of(studyCafePassType, duration, price, discountRate);
-            })
+            .map(this::getStudyCafePassFrom)
             .toList();
+    }
+
+    private StudyCafePass getStudyCafePassFrom(String[] values) {
+        StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
+        int duration = Integer.parseInt(values[1]);
+        int price = Integer.parseInt(values[2]);
+        double discountRate = Double.parseDouble(values[3]);
+
+        return StudyCafePass.of(studyCafePassType, duration, price, discountRate);
     }
 
     private List<StudyCafeLockerPass> getLockerPasses(List<String> lines) {
         return lines.stream()
             .map(line -> line.split(","))
-            .map(values -> {
-                StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
-                int duration = Integer.parseInt(values[1]);
-                int price = Integer.parseInt(values[2]);
-
-                return StudyCafeLockerPass.of(studyCafePassType, duration, price);
-            })
+            .map(this::getLockerPassFrom)
             .toList();
+    }
+
+    private StudyCafeLockerPass getLockerPassFrom(String[] values) {
+        StudyCafePassType studyCafePassType = StudyCafePassType.valueOf(values[0]);
+        int duration = Integer.parseInt(values[1]);
+        int price = Integer.parseInt(values[2]);
+
+        return StudyCafeLockerPass.of(studyCafePassType, duration, price);
     }
 
 }
