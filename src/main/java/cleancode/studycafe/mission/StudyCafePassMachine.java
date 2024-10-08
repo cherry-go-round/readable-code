@@ -12,7 +12,7 @@ import java.util.List;
 
 public class StudyCafePassMachine {
 
-    public static final StudyCafeFileHandler FILE_HANDLER = new StudyCafeFileHandler();
+    private static final StudyCafeFileHandler FILE_HANDLER = new StudyCafeFileHandler();
     private final InputHandler inputHandler = new InputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
 
