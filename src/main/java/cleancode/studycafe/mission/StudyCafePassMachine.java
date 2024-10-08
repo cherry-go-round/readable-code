@@ -1,6 +1,7 @@
 package cleancode.studycafe.mission;
 
 import cleancode.studycafe.mission.exception.AppException;
+import cleancode.studycafe.mission.io.ConsoleInputHandler;
 import cleancode.studycafe.mission.io.InputHandler;
 import cleancode.studycafe.mission.io.OutputHandler;
 import cleancode.studycafe.mission.io.StudyCafeFileHandler;
@@ -15,7 +16,7 @@ import java.util.function.Consumer;
 public class StudyCafePassMachine {
 
     private static final StudyCafeFileHandler FILE_HANDLER = new StudyCafeFileHandler();
-    private final InputHandler inputHandler = new InputHandler();
+    private final InputHandler inputHandler = new ConsoleInputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
 
     public void run() {
