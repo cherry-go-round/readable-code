@@ -52,7 +52,7 @@ public class OutputHandler {
             System.out.println("이벤트 할인 금액: " + discountPrice + "원");
         }
 
-        int totalPrice = selectedPass.getPrice() - discountPrice;
+        int totalPrice = selectedPass.getDiscountedPrice();
         System.out.println("총 결제 금액: " + totalPrice + "원");
         System.out.println();
     }
@@ -69,7 +69,7 @@ public class OutputHandler {
             System.out.println("이벤트 할인 금액: " + discountPrice + "원");
         }
 
-        int totalPrice = selectedPass.getPrice() - discountPrice + lockerPass.getPrice();
+        int totalPrice = selectedPass.getDiscountedPrice() + lockerPass.getPrice();
         System.out.println("총 결제 금액: " + totalPrice + "원");
         System.out.println();
     }

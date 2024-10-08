@@ -26,12 +26,12 @@ public class StudyCafePass {
         return this.passType.equals(passType) && this.duration == duration;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
     public int getDiscountPrice() {
         return (int) (price * discountRate);
+    }
+
+    public int getDiscountedPrice() {
+        return price - getDiscountPrice();
     }
 
     public String display() {
