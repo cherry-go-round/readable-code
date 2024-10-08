@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class InputHandler {
 
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final String SELECTED = "1";
+    private static final String LOCKER_SELECTED = "1";
 
     public StudyCafePassType getPassTypeSelectingUserAction() {
         String userInput = SCANNER.nextLine();
@@ -35,7 +35,7 @@ public class InputHandler {
 
     public boolean isLockerSelected() {
         String userInput = SCANNER.nextLine();
-        return SELECTED.equals(userInput);
+        return LOCKER_SELECTED.equals(userInput);
     }
 
 }
