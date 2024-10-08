@@ -13,8 +13,13 @@ import java.util.function.Consumer;
 public class StudyCafePassMachine {
 
     private static final StudyCafeFileHandler FILE_HANDLER = new StudyCafeFileHandler();
-    private final InputHandler inputHandler = new ConsoleInputHandler();
-    private final OutputHandler consoleOutputHandler = new ConsoleOutputHandler();
+    private final InputHandler inputHandler;
+    private final OutputHandler consoleOutputHandler;
+
+    public StudyCafePassMachine(InputHandler inputHandler, OutputHandler consoleOutputHandler) {
+        this.inputHandler = inputHandler;
+        this.consoleOutputHandler = consoleOutputHandler;
+    }
 
     public void run() {
         try {
