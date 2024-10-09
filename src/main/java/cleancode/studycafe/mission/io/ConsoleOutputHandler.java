@@ -54,7 +54,7 @@ public class ConsoleOutputHandler implements OutputHandler {
         System.out.println("이용권: " + selectedPass.display());
 
         int discountPrice = selectedPass.getDiscountPrice();
-        if (discountPrice > 0) {
+        if (discountPriceIsPresent(discountPrice)) {
             System.out.println("이벤트 할인 금액: " + discountPrice + "원");
         }
 
@@ -72,7 +72,7 @@ public class ConsoleOutputHandler implements OutputHandler {
         System.out.println("사물함: " + lockerPass.display());
 
         int discountPrice = selectedPass.getDiscountPrice();
-        if (discountPrice > 0) {
+        if (discountPriceIsPresent(discountPrice)) {
             System.out.println("이벤트 할인 금액: " + discountPrice + "원");
         }
 
@@ -84,6 +84,10 @@ public class ConsoleOutputHandler implements OutputHandler {
     @Override
     public void showSimpleMessage(String message) {
         System.out.println(message);
+    }
+
+    private boolean discountPriceIsPresent(int discountPrice) {
+        return discountPrice > 0;
     }
 
 }
