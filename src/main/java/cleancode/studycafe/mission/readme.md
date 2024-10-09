@@ -1,9 +1,11 @@
 # Day 7 미션
+
 [Readable Code: 읽기 좋은 코드를 작성하는 사고법](https://www.inflearn.com/course/readable-code-%EC%9D%BD%EA%B8%B0%EC%A2%8B%EC%9D%80%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1%EC%82%AC%EA%B3%A0%EB%B2%95/dashboard)
 
 섹션 7. 리팩토링 연습
 
 ## 주요 변경 사항
+
 * io에 인터페이스를 만들고 DI 적용 - 콘솔이 아닌 다른 방법으로 I/O 가능, csv 파일 대신 데이터베이스로 대체 가능
 * for 문 대신 stream API 적용
 * if 문 대신 switch 활용 (enum에 잘 어울림)
@@ -36,4 +38,7 @@
                 );
     ```
 
-    이런 경우 두 메소드의 추상화 레벨이 다르지만 람다로 간단하게 표현할 수 있는 부분을 굳이 메소드로 분리해야 하나 의문이 들었음.
+  이런 경우 두 메소드의 추상화 레벨이 다르지만 람다로 간단하게 표현할 수 있는 부분을 굳이 메소드로 분리해야 하나 의문이 들었음.
+
+### value 타입
+`StudyCafePass`와 `StudyCafeLockerPass`에 equals와 hashCode를 추가해서 value 타입으로 만들어야 할지 잘 모르겠음.
