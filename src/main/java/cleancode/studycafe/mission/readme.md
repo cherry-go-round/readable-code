@@ -28,8 +28,7 @@
 
 ### 추상화 레벨 문제
 
-* 추상화 레벨을 최대한 맞추는 게 좋다는 것은 알고 있지만 적용하기 쉽지 않았음.
-* 특히
+* 추상화 레벨을 최대한 맞추는 게 좋다는 것은 알고 있지만 적용하기 쉽지 않았음. 특히
 
     ```
     lockerPass.ifPresentOrElse(
@@ -41,4 +40,4 @@
   이런 경우 두 메소드의 추상화 레벨이 다르지만 람다로 간단하게 표현할 수 있는 부분을 굳이 메소드로 분리해야 하나 의문이 들었음.
 
 ### value 타입
-`StudyCafePass`와 `StudyCafeLockerPass`에 equals와 hashCode를 추가해서 value 타입으로 만들어야 할지 잘 모르겠음.
+* `StudyCafePass`와 `StudyCafeLockerPass`에 equals와 hashCode를 추가해서 value 타입으로 만들어야 할지 잘 모르겠음.
