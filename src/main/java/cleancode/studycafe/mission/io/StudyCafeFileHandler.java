@@ -19,7 +19,6 @@ public class StudyCafeFileHandler implements PassHandler {
     public List<StudyCafePass> readStudyCafePasses() {
         try {
             List<String> lines = readAllLinesAt(Paths.get(PASS_LIST_PATH));
-
             return getStudyCafePasses(lines);
         } catch (IOException e) {
             throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
@@ -30,7 +29,6 @@ public class StudyCafeFileHandler implements PassHandler {
     public List<StudyCafeLockerPass> readLockerPasses() {
         try {
             List<String> lines = readAllLinesAt(Paths.get(LOCKER_PATH));
-
             return getLockerPasses(lines);
         } catch (IOException e) {
             throw new RuntimeException("파일을 읽는데 실패했습니다.", e);
