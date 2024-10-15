@@ -37,7 +37,7 @@ class StudyCafeSeatPassTest {
     @Test
     void hourlySeatCannotUseLocker() {
         //given
-        StudyCafeSeatPass seatPass = StudyCafeSeatPass.of(StudyCafePassType.HOURLY, 2,4000,0.0);
+        StudyCafeSeatPass seatPass = StudyCafeSeatPass.of(StudyCafePassType.HOURLY, 2, 4000, 0.0);
 
         //when
         boolean passCannotUseLocker = seatPass.cannotUseLocker();
