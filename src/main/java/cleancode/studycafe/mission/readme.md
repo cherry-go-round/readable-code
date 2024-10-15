@@ -41,4 +41,5 @@
   이런 경우 두 메소드의 추상화 레벨이 다르지만 람다로 간단하게 표현할 수 있는 부분을 굳이 메소드로 분리해야 하나 의문이 들었음.
 
 ### value 타입
+
 `StudyCafePass`와 `StudyCafeLockerPass`에 equals와 hashCode를 추가해서 value 타입으로 만들어야 할지 잘 모르겠음.

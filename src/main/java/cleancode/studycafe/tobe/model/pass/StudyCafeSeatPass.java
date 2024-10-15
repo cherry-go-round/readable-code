@@ -49,7 +49,7 @@ public class StudyCafeSeatPass implements StudyCafePass {
     }
 
     public int getDiscountPrice() {
-        return  (int) (price * discountRate);
+        return (int) (price * discountRate);
     }
 
 }
